@@ -1,4 +1,8 @@
 /node_modules/
-/build/
+/build
 .DS_Store
+/.vs
+bun.lockb
 .env
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*

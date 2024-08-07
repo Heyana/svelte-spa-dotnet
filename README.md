@@ -1,41 +1,32 @@
-# Svelte Encrypted SPA
+# Svelte SPA .NET
 
-🔐 Easily create private, encrypted single page applications with Svelte and PageCrypt.
+Easily create .NET applications powered by Svelte and webview2.
 
 ## Technologies used
 
 -   `svelte` for rapid UI development.
 -   `vite` for modern DX and bundling.
+-   `.NET` for bridge between web UI and your machine.
+-   `webview2` for light weight browser interface.
 -   `tailwindcss` for simple and efficient styling.
 -   `svelte-pathfinder` for in-memory routing.
--   `vite-plugin-singlefile` for building a single output HTML file that can be easily encrypted along with all its assets.
--   `pagecrypt` for encrypting the output HTML with strong encryption a password.
+-   `vite-plugin-singlefile` for building a single output HTML file that can be easily embedded into the .NET app.
 -   `prettier` for consistent code formatting.
+
+## Why I built this
+
+I don't have time to learn rust to use tauri.
+
+---
 
 ## Installation
 
-Make a copy of `.env.example` and rename one of them to `.env`. Then you can use `.env` to change config for the app.
+Click on `use this template` above to clone the repo to your github, then
 
 ```
-pnpm install
-pnpm dev
+bun install
+bun dev
 ```
-
-## Change the password for the built app
-
-By default, a new password is generated for each build which will be logged to the console. If you want to set a specific password, you can do so by using the `PASSWORD` variable in `.env`.
-
-## Generating a Magic Link for Easy Access
-
-If you set `DEPLOYMENT_URL` in `.env` and run `npm run build`, a magic link will be printed to the console that allows users to open the app with a single click once it has been deployed. This allows a really smooth UX for your users.
-
-## Static assets in the `/public` directory
-
-By default, the static assets in the `/public` directory will not be encrypted, so make sure to find a good solution for your use case.
-
-One approach is to host static assets separately on another server. This will hide both the assets themselves, and the URL:s from where the app will fetch them since the source code is encrypted.
-
-For additional security considerations, refer to the [pagecrypt docs](https://github.com/greenheart/pagecrypt#security-considerations)
 
 ---
 
@@ -43,12 +34,12 @@ For additional security considerations, refer to the [pagecrypt docs](https://gi
 
 ### Start a development server
 
-`pnpm dev`
+this will run vite dev server and .NET app in debug mode
 
-### Build the application and create the encrypted build
+`bun dev`
 
-`pnpm build`
+### Build the application and create the .NET app
 
-### Preivew the application
+this will build vite app into single html file then copy it to `csharp-src/wwwroot` then publish the .NET app in `csharp-src/publish/win-x64`
 
-`pnpm preview`
+`bun run build`

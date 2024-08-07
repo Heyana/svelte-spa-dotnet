@@ -1,48 +1,50 @@
 {
-    "name": "svelte-encrypted-spa",
-    "author": "Samuel Plumppu",
-    "version": "1.0.0",
-    "private": true,
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build && node --env-file=.env scripts/postbuild.js",
-        "preview": "vite preview",
-        "check": "svelte-check --tsconfig ./tsconfig.json"
-    },
-    "dependencies": {
-        "svelte-pathfinder": "^4.7.1"
-    },
-    "devDependencies": {
-        "@sveltejs/vite-plugin-svelte": "^4.0.0-next.2",
-        "@tsconfig/svelte": "^5.0.4",
-        "autoprefixer": "^10.4.19",
-        "pagecrypt": "^6.1.1",
-        "postcss": "^8.4.38",
-        "postcss-load-config": "^5.1.0",
-        "prettier": "^3.2.5",
-        "prettier-plugin-svelte": "^3.2.3",
-        "svelte": "^5.0.0-next.141",
-        "svelte-check": "^3.7.1",
-        "tailwindcss": "^3.4.3",
-        "typescript": "^5.4.5",
-        "vite": "^5.2.11",
-        "vite-plugin-singlefile": "^2.0.1"
-    },
-    "prettier": {
-        "semi": false,
-        "tabWidth": 4,
-        "singleQuote": true,
-        "trailingComma": "all",
-        "svelteSortOrder": "scripts-options-markup-styles",
-        "svelteStrictMode": false,
-        "svelteBracketNewLine": true,
-        "svelteAllowShorthand": true,
-        "plugins": [
-            "prettier-plugin-svelte"
-        ]
-    },
-    "engines": {
-        "node": ">= 20.12.0"
-    },
-    "type": "module"
+  "name": "svelte-spa-dotnet",
+  "version": "1.0.0",
+  "scripts": {
+    "dev:svelte": "vite dev --port 3005",
+    "build:svelte": "vite build",
+    "preview:svelte": "vite preview",
+    "dev:dotnet": "dotnet run debug --project csharp-src",
+    "build:dotnet": "dotnet publish csharp-src -r win-x64",
+    "dev": "concurrently --kill-others \"bun dev:svelte\" \"bun dev:dotnet\"",
+    "build": "pwsh scripts/build.ps1",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
+  },
+  "dependencies": {
+    "svelte-pathfinder": "^4.7.1"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^4.0.0-next.2",
+    "@tsconfig/svelte": "^5.0.4",
+    "autoprefixer": "^10.4.19",
+    "concurrently": "^8.2.2",
+    "postcss": "^8.4.38",
+    "postcss-load-config": "^5.1.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-svelte": "^3.2.3",
+    "svelte": "^5.0.0-next.141",
+    "svelte-check": "^3.7.1",
+    "tailwindcss": "^3.4.3",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11",
+    "vite-plugin-singlefile": "^2.0.1"
+  },
+  "prettier": {
+    "semi": false,
+    "tabWidth": 4,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "svelteSortOrder": "scripts-options-markup-styles",
+    "svelteStrictMode": false,
+    "svelteBracketNewLine": true,
+    "svelteAllowShorthand": true,
+    "plugins": [
+      "prettier-plugin-svelte"
+    ]
+  },
+  "engines": {
+    "node": ">= 20.12.0"
+  },
+  "type": "module"
 }
