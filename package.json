@@ -5,8 +5,8 @@
     "dev:svelte": "vite dev --port 3005",
     "build:svelte": "vite build",
     "preview:svelte": "vite preview",
-    "dev:dotnet": "dotnet run debug --project csharp-src",
-    "build:dotnet": "dotnet publish csharp-src -r win-x64",
+    "dev:dotnet": "dotnet run debug --project csharp-src -c Debug",
+    "build:dotnet": "dotnet publish csharp-src -r win-x64 && dotnet publish csharp-src -r win-x86",
     "dev": "concurrently --kill-others \"bun dev:svelte\" \"bun dev:dotnet\"",
     "build": "pwsh scripts/build.ps1",
     "check": "svelte-check --tsconfig ./tsconfig.json"

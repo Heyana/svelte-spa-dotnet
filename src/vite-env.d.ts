@@ -11,5 +11,6 @@ interface Window {
     };
 }
 interface NativeMethods {
-    Greet(name: string): void;
+    Greet(name: string): Promise<void>;
+    Name: string | Promise<string>;
 }

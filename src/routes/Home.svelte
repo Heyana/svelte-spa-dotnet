@@ -1,10 +1,19 @@
-<script context="module" lang="ts">
-    import { invoke } from '../lib/invoke'
-    import dotnetsvg from '../../assets/dotnet.svg'
-    import vitesvg from '../../assets/vitejs.svg'
-    import sveltesvg from '../../assets/svelte.svg'
+<script lang="ts">
+    import { native } from '@/invoke'
+    import dotnetsvg from '@assets/dotnet.svg'
+    import vitesvg from '@assets/vitejs.svg'
+    import sveltesvg from '@assets/svelte.svg'
 
     let name = ''
+
+    async function greet() {
+        if (name === '') {
+            alert('Please enter a name!')
+            return
+        }
+        await native.Greet(name)
+        console.log(await native.Name)
+    }
 </script>
 
 <div
@@ -48,8 +57,8 @@
             class="rounded-lg border bg-white px-4 py-2 text-gray-900 shadow-sm transition-colors duration-200 focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 dark:bg-gray-800 dark:text-gray-100 dark:focus:border-blue-400 dark:focus:ring-blue-400"
         />
         <button
-            type="submit"
-            on:click={() => invoke('Greet', { name })}
+            type="button"
+            on:click={greet}
             class="rounded-lg border bg-white px-4 py-2 text-gray-900 shadow-sm transition-colors duration-200 hover:border-blue-500 hover:bg-gray-100 active:border-blue-500 active:bg-gray-200 dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700 dark:active:bg-gray-600"
         >
             Greet
